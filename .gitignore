@@ -1,0 +1,6 @@
+app/build
+build/
+gradle/
+.git/
+.gradle/
+.idea/
