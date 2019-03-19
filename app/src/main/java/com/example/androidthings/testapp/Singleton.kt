@@ -22,6 +22,7 @@ object Singleton {
         gpioLed.setDirection(Gpio.DIRECTION_OUT_INITIALLY_LOW)
         Log.i(TAG, "Setting pin activation on rising edge")
         gpioButton.setEdgeTriggerType(Gpio.EDGE_RISING)
+        Log.i(TAG,"End init")
     }
 
     fun changeState() {

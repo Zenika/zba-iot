@@ -14,8 +14,6 @@ import utils.ACTION_STOP
 import utils.PORT
 import utils.TAG
 
-// TODO: AndroidRuntime: java.net.SocketException: Permission denied
-
 open class RESTfulService: IntentService("RestServer") {
 
 
@@ -27,6 +25,7 @@ open class RESTfulService: IntentService("RestServer") {
         // ".getInstance" : returns the registered Restlet engine
         // ".registeredServers" Returns the list of available server connectors
         // ".clear" : clears the current Restlet Engine
+        // First we clean the connections
         Engine.getInstance().registeredServers.clear()
         // "HttpServerHelper" : create server connector helper set to null
         val httpServerHelper = HttpServerHelper(null)
@@ -47,23 +46,17 @@ open class RESTfulService: IntentService("RestServer") {
 
     fun serverStatus(context: Context, status: Boolean) {
         val intent = Intent(context,RESTfulService::class.java)
-        Log.i(TAG,"test")
-        if(status) intent.action = ACTION_START  else intent.action = ACTION_STOP
+        if(status) intent.setAction(ACTION_START) else intent.setAction(ACTION_STOP)
         Log.i(TAG,"start intent in context")
         context.startService(intent)
-        Log.i(TAG,"Service started")
+        Log.i(TAG,"Service started : $status")
     }
 
     override fun onHandleIntent(intent: Intent?) {
         Log.i(TAG,"Handling intent status")
         intent?.let {
-            if(ACTION_START == intent.action){
-                component.start()
-                Log.i(TAG, "component.start")
-            }else {
-                component.stop()
-                Log.i(TAG, "component.stop")
-            }
+            if(ACTION_START == intent.action) component.start()
+            else if (ACTION_START == intent.action) component.stop()
         }
     }
 }

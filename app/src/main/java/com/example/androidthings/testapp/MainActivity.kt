@@ -16,8 +16,7 @@ class MainActivity : Activity() {
         Singleton
         // Launch server
         Log.i(TAG, "Init server")
-        restFulService = RESTfulService()
-        Log.i(TAG,"Start server ")
+        val restFulService = RESTfulService()
         restFulService.serverStatus(this,true)
         // On click
         Log.i(TAG, "Button click")
