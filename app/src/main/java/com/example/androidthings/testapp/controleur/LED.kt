@@ -1,6 +1,7 @@
-package com.example.androidthings.testapp
+package com.example.androidthings.testapp.controleur
 
 import android.util.Log
+import com.example.androidthings.testapp.Singleton.LedSingleton
 import org.json.JSONObject
 import org.restlet.data.MediaType
 import org.restlet.ext.json.JsonRepresentation
@@ -10,7 +11,7 @@ import org.restlet.resource.Post
 import org.restlet.resource.ServerResource
 import utils.TAG
 
-class LEDResource: ServerResource() {
+class LED: ServerResource() {
 
     @Post("json")
     fun postState(entity: JsonRepresentation): Representation {
@@ -21,7 +22,7 @@ class LEDResource: ServerResource() {
             val json = JsonRepresentation(entity)
             result = json.jsonObject
             val state = result.get("state") as Boolean
-            if(state)Singleton.changeState()
+            if(state) LedSingleton.changeState()
         } catch (e: Exception) {
             e.printStackTrace()
         }

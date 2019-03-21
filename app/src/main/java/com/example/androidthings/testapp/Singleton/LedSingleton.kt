@@ -1,4 +1,4 @@
-package com.example.androidthings.testapp
+package com.example.androidthings.testapp.Singleton
 
 import android.util.Log
 import com.google.android.things.pio.Gpio
@@ -7,7 +7,7 @@ import utils.PIN_BUTTON
 import utils.PIN_LED
 import utils.TAG
 
-object Singleton {
+object LedSingleton {
 
     var gpioButton: Gpio
     private var gpioLed: Gpio
@@ -28,6 +28,7 @@ object Singleton {
     fun changeState() {
         Log.i(TAG, "Changing LED's state")
         ledState = !ledState
-        gpioLed.value = ledState
+        gpioLed.value =
+            ledState
     }
 }
