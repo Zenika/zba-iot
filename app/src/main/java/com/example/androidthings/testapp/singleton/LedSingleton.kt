@@ -1,4 +1,4 @@
-package com.example.androidthings.testapp.Singleton
+package com.example.androidthings.testapp.singleton
 
 import android.util.Log
 import com.google.android.things.pio.Gpio

@@ -1,4 +1,4 @@
-package com.example.androidthings.testapp.Singleton
+package com.example.androidthings.testapp.singleton
 
 import android.util.Log
 import com.google.android.things.pio.PeripheralManager
@@ -21,6 +21,11 @@ object SerialSingleton {
         }
     }
 
+    /** Convert received byte array to String :
+     *      @filter : get only vale while incoming byte
+     *      @joinToString : add byte to string together with no separator
+     *                      convert to character and string
+     **/
     private fun ByteArray.toReadableString() = filter{it>0.toByte()}.joinToString(separator = ""){it.toChar().toString()}
 
     @Throws(IOException::class)

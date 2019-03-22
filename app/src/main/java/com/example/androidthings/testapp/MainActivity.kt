@@ -3,8 +3,8 @@ package com.example.androidthings.testapp
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
-import com.example.androidthings.testapp.Singleton.LedSingleton
-import com.example.androidthings.testapp.Singleton.SerialSingleton
+import com.example.androidthings.testapp.singleton.LedSingleton
+import com.example.androidthings.testapp.singleton.SerialSingleton
 import utils.TAG
 
 class MainActivity : Activity() {

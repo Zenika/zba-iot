@@ -1,7 +1,7 @@
 package com.example.androidthings.testapp.controleur
 
 import android.util.Log
-import com.example.androidthings.testapp.Singleton.SerialSingleton
+import com.example.androidthings.testapp.singleton.SerialSingleton
 import org.json.JSONObject
 import org.restlet.data.MediaType
 import org.restlet.ext.json.JsonRepresentation
@@ -11,8 +11,14 @@ import org.restlet.resource.Post
 import org.restlet.resource.ServerResource
 import utils.TAG
 
+/** Controleur to get temperature from android things Device**/
 class Temperature: ServerResource() {
 
+    /** if post :
+     * @param json object
+     * call getTemp function
+     * @return json with temperature
+     **/
     @Post("json")
     fun postState(entity: JsonRepresentation): Representation {
         var result = JSONObject()

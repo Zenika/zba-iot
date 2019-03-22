@@ -1,7 +1,7 @@
 package com.example.androidthings.testapp.controleur
 
 import android.util.Log
-import com.example.androidthings.testapp.Singleton.LedSingleton
+import com.example.androidthings.testapp.singleton.LedSingleton
 import org.json.JSONObject
 import org.restlet.data.MediaType
 import org.restlet.ext.json.JsonRepresentation
