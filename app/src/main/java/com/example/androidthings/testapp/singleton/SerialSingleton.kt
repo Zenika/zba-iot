@@ -22,7 +22,7 @@ object SerialSingleton {
     }
 
     /** Convert received byte array to String :
-     *      @filter : get only vale while incoming byte
+     *      @filter : get only if incoming byte
      *      @joinToString : add byte to string together with no separator
      *                      convert to character and string
      **/
