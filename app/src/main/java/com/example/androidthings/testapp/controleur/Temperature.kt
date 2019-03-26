@@ -15,25 +15,17 @@ import utils.TAG
 /** Controleur to get temperature from android things Device**/
 class Temperature: ServerResource() {
 
-    /** if post :
+    /** if Get :
      * @param json object
      * call getTemp function
      * @return json with temperature
      **/
-    @Get("")
-    fun getState(entity: JsonRepresentation): Representation {
-        var result = JSONObject()
-        var get = "404 error"
-
-        Log.i(TAG, "@Get : $result")
-        try {
-            val json = JsonRepresentation(entity)
-            result = json.jsonObject
-            val temp = result.get("temp") as Boolean
-            if(temp) { get = SerialSingleton.getTemp() }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-        return StringRepresentation(get, MediaType.APPLICATION_ALL_JSON)
+    @Get("json")
+    fun getState(): Representation {
+        val result = JSONObject()
+        val temp = SerialSingleton.getTemp()
+        Log.i(TAG, "@Get : $temp")
+        result.put("temp", temp)
+        return StringRepresentation(result.toString(), MediaType.APPLICATION_ALL_JSON)
     }
 }

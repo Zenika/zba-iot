@@ -26,7 +26,8 @@ object SerialSingleton {
      *      @joinToString : add byte to string together with no separator
      *                      convert to character and string
      **/
-    private fun ByteArray.toReadableString() = filter{it>0.toByte()}.joinToString(separator = ""){it.toChar().toString()}
+    private fun ByteArray.toReadableString() = filter{it>0.toByte()}
+        .joinToString(separator = ""){it.toChar().toString()}
 
     @Throws(IOException::class)
     private fun read(): String {

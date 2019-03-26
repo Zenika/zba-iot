@@ -18,7 +18,6 @@ import utils.TAG
 
 open class RESTfulService: IntentService("RestServer") {
 
-
     private var component = Component()
 
     init {
