@@ -7,6 +7,7 @@ import org.restlet.data.MediaType
 import org.restlet.ext.json.JsonRepresentation
 import org.restlet.representation.Representation
 import org.restlet.representation.StringRepresentation
+import org.restlet.resource.Get
 import org.restlet.resource.Post
 import org.restlet.resource.ServerResource
 import utils.TAG
@@ -19,12 +20,12 @@ class Temperature: ServerResource() {
      * call getTemp function
      * @return json with temperature
      **/
-    @Post("json")
-    fun postState(entity: JsonRepresentation): Representation {
+    @Get("")
+    fun getState(entity: JsonRepresentation): Representation {
         var result = JSONObject()
         var get = "404 error"
 
-        Log.i(TAG, "@Post : $result")
+        Log.i(TAG, "@Get : $result")
         try {
             val json = JsonRepresentation(entity)
             result = json.jsonObject
