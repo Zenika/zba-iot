@@ -23,7 +23,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])//FIXME: Change "files" dependencies to "compile" dependencies and remove libs dir
     implementation 'com.android.support:support-v4:28.0.0'
     implementation files('libs/org.restlet.ext.nio.jar')
     implementation files('libs/org.restlet.ext.json.jar')
