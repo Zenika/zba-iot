@@ -1,4 +1,5 @@
 app/build
+app/libs
 build/
 gradle/
 .git/
