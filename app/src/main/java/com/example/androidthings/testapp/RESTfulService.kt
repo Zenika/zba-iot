@@ -4,6 +4,8 @@ import android.app.IntentService
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import com.example.androidthings.testapp.controleur.LED
+import com.example.androidthings.testapp.controleur.Temperature
 import org.restlet.Component
 import org.restlet.data.Protocol
 import org.restlet.engine.Engine
@@ -15,7 +17,6 @@ import utils.PORT
 import utils.TAG
 
 open class RESTfulService: IntentService("RestServer") {
-
 
     private var component = Component()
 
@@ -38,7 +39,8 @@ open class RESTfulService: IntentService("RestServer") {
         // create a router
         val router = Router(component.context.createChildContext())
         // Attach the router to the LEDRessource class
-        router.attach("/led",LEDResource::class.java)
+        router.attach("/led", LED::class.java)
+        router.attach("/temp", Temperature::class.java)
         // Then attach the server connector to the local host
         component.defaultHost.attach("/rest",router)
         Log.i(TAG,"End init")

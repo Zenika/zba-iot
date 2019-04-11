@@ -1,4 +1,4 @@
-package com.example.androidthings.testapp
+package com.example.androidthings.testapp.singleton
 
 import android.util.Log
 import com.google.android.things.pio.Gpio
@@ -7,7 +7,7 @@ import utils.PIN_BUTTON
 import utils.PIN_LED
 import utils.TAG
 
-object Singleton {
+object LedSingleton {
 
     var gpioButton: Gpio
     private var gpioLed: Gpio
@@ -23,11 +23,11 @@ object Singleton {
         Log.i(TAG, "Setting pin activation on rising edge")
         gpioButton.setEdgeTriggerType(Gpio.EDGE_RISING)
         Log.i(TAG,"End init")
+        gpioLed.value = false
     }
 
     fun changeState() {
         Log.i(TAG, "Changing LED's state")
-        ledState = !ledState
-        gpioLed.value = ledState
+        gpioLed.value = !gpioLed.value
     }
 }
