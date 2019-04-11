@@ -23,12 +23,11 @@ object LedSingleton {
         Log.i(TAG, "Setting pin activation on rising edge")
         gpioButton.setEdgeTriggerType(Gpio.EDGE_RISING)
         Log.i(TAG,"End init")
+        gpioLed.value = false
     }
 
     fun changeState() {
         Log.i(TAG, "Changing LED's state")
-        ledState = !ledState
-        gpioLed.value =
-            ledState
+        gpioLed.value = !gpioLed.value
     }
 }

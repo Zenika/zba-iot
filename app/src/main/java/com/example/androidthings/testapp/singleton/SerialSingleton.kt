@@ -3,6 +3,9 @@ package com.example.androidthings.testapp.singleton
 import android.util.Log
 import com.google.android.things.pio.PeripheralManager
 import com.google.android.things.pio.UartDevice
+import utils.BAUD_RATE
+import utils.DATA_SIZE
+import utils.STOP_BIT
 import utils.TAG
 import java.io.IOException
 
@@ -13,10 +16,10 @@ object SerialSingleton {
     init {
         uart.apply {
             // Configure the UART port
-            setBaudrate(115200)
-            setDataSize(8)
+            setBaudrate(BAUD_RATE)
+            setDataSize(DATA_SIZE)
             setParity(UartDevice.PARITY_NONE)
-            setStopBits(1)
+            setStopBits(STOP_BIT)
             setHardwareFlowControl(UartDevice.HW_FLOW_CONTROL_NONE)
         }
     }
@@ -31,10 +34,9 @@ object SerialSingleton {
 
     @Throws(IOException::class)
     private fun read(): String {
-        val buffer = ByteArray(8)
-        var output = ""
+        val buffer = ByteArray(DATA_SIZE)
         val count = uart.read(buffer, buffer.size)
-        output = buffer.toReadableString()
+        val output = buffer.toReadableString()
         Log.i(TAG, "Read ${buffer.toReadableString()} $count bytes from peripheral")
         return output
     }
